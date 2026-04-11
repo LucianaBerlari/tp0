@@ -3,8 +3,7 @@
 int main(void)
 {
 	/*---------------------------------------------------PARTE 2-------------------------------------------------------------*/
-	int cambio;
-	int cambio2;
+
 	int conexion;
 	char* ip;
 	char* puerto;
@@ -40,7 +39,7 @@ int main(void)
 	// ADVERTENCIA: Antes de continuar, tenemos que asegurarnos que el servidor esté corriendo para poder conectarnos a él
 
 	// Creamos una conexión hacia el servidor
-	conexion = crear_conexion(ip, puerto);
+	conexion = crearconexion(ip, puerto);
 
 	// Enviamos al servidor el valor de CLAVE como mensaje
 
@@ -55,7 +54,8 @@ int main(void)
 
 t_log* iniciar_logger(void)
 {
-	t_log* nuevo_logger;
+	
+	t_log* nuevo_logger = log_create('tp0.log', 'logger-clie', true, LOG_LEVEL_INFO);
 
 	return nuevo_logger;
 }
@@ -77,7 +77,7 @@ void leer_consola(t_log* logger)
 	// El resto, las vamos leyendo y logueando hasta recibir un string vacío
 
 
-	// ¡No te olvides de liberar las lineas antes de regresar!
+	// ¡No te olvides de liberar las lineas antes de regresar!	
 
 }
 
@@ -99,3 +99,4 @@ void terminar_programa(int conexion, t_log* logger, t_config* config)
 	/* Y por ultimo, hay que liberar lo que utilizamos (conexion, log y config) 
 	  con las funciones de las commons y del TP mencionadas en el enunciado */
 }
+
