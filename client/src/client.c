@@ -4,6 +4,7 @@ int main(void)
 {
 	/*---------------------------------------------------PARTE 2-------------------------------------------------------------*/
 	int cambio;
+	int cambio2;
 	int conexion;
 	char* ip;
 	char* puerto;
