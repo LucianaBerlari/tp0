@@ -4,11 +4,23 @@ int main(void) {
 	logger = log_create("log.log", "Servidor", 1, LOG_LEVEL_DEBUG);
 
 	int server_fd = iniciar_servidor();
+
+	//chequeo que server_fd me de lo que quiero
+	if(server_fd < 0){
+		printf("error en inciar servidor");
+	}
+
 	log_info(logger, "Servidor listo para recibir al cliente");
 	int cliente_fd = esperar_cliente(server_fd);
 
+//chequeo que server_fd me de lo que quiero
+	if(cliente_fd < 0){
+		printf("error en esperar clinte");
+	}
+
 	t_list* lista;
-	while (1) {
+	while (1) // 1--> true. 0--> false
+	{
 		int cod_op = recibir_operacion(cliente_fd);
 		switch (cod_op) {
 		case MENSAJE:

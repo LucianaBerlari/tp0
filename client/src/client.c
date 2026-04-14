@@ -43,7 +43,7 @@ int main(void)
 
 	// Creamos una conexión hacia el servidor
 	conexion = crear_conexion(ip, puerto);
-	if (conexion != -1)
+	if (conexion > 0)
 	{
 		// Enviamos al servidor el valor de CLAVE como mensaje
 		enviar_mensaje(valor, conexion);
@@ -103,15 +103,16 @@ void leer_consola(t_log *logger)
 void paquete(int conexion)
 {
 	// Ahora toca lo divertido!
-	char *leido = readline("> ");
+	char *leido = readline("> vamos a crear el paquete: ");
 	t_paquete *paquete = crear_paquete();
 
 	// Leemos y esta vez agregamos las lineas al paquete
+
 	while (strcmp(leido, "") != 0)
 	{
 		agregar_a_paquete(paquete, leido, strlen(leido) + 1);
 		free(leido);
-		leido = readline("> ");
+		leido = readline("> vamos a crear el paquete: ");
 	}
 	free(leido);
 
